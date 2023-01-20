@@ -1,0 +1,42 @@
+{
+  "name": "authctl",
+  "version": "0.1.0",
+  "description": "A CLI tool for streamlining common developer activities",
+  "main": "index.js",
+  "author": "Brandon Young <bkyoung@gmail.com>",
+  "license": "MIT",
+  "bin": {
+    "authctl": "./src/index.js"
+  },
+  "pkg": {
+    "assets": [
+      "./src/**/*",
+      "./node_modules/**/*"
+    ],
+    "targets": [
+      "node18-linuxstatic-x64",
+      "node18-macos-arm64",
+      "node18-macos-x64",
+      "node18-win-x64"
+    ]
+  },
+  "scripts": {
+    "bump": "npm version ${VERSION:-patch} --no-commit-hooks --no-git-tag-version",
+    "build": "npx pkg . --compress GZip --public-packages '*' --out-path bin/",
+    "clean": "rm -rf bin/"
+  },
+  "dependencies": {
+    "compare-versions": "^5.0.1",
+    "fast-jwt": "^2.0.2",
+    "fetch-cookie": "^2.1.0",
+    "googleapis": "^109.0.1",
+    "graphql": "^16.6.0",
+    "graphql-request": "^5.0.0",
+    "isomorphic-git": "^1.21.0",
+    "jose": "^4.11.1",
+    "node-vault": "^0.9.22",
+    "octokit": "^2.0.10",
+    "open": "^8.4.0",
+    "yargs": "^17.6.2"
+  }
+}
